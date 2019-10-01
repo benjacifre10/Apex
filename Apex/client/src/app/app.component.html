@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div style="text-align:center">
+  <h1>
+    Preguntas Frecuentes!
+  </h1>
+  <h6 *ngIf="show">{{ time }}</h6>
+  <br>
+  <img width="100" alt="Angular Logo" src="assets/emoji.png">
+  <hr>
+  <div *ngIf="show">
+    <div class="accordion" id="accordionExample">
+      <div *ngFor="let res of questions.message.result;let indice=index">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' +indice" aria-expanded="false" aria-controls="collapseOne">
+                {{indice +1 }}- {{ res.index }}
+              </button>
+            </h2>
+          </div>
+
+          <div id="{{'collapse' + indice}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="res.value"></div>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h2><router-outlet></router-outlet> </h2>
